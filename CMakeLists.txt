@@ -27,12 +27,12 @@ endif()
 # Dependencies (optional, only used for example)
 find_package(OpenCV REQUIRED)
 
-find_package(FP16 REQUIRED)
+#find_package(FP16 REQUIRED)
 # add_library(utility src/utility.cpp)
 # target_link_libraries(utility FP16::fp16 ${OpenCV_LIBS})
 
 # Create unity library
-add_library(${TARGET_NAME}
+add_library(${TARGET_NAME} SHARED
     src/utility.cpp
     src/device/DeviceManager.cpp
     src/device/Streams.cpp
@@ -52,7 +52,7 @@ target_include_directories(${TARGET_NAME}
 
 target_link_libraries(${TARGET_NAME}
     PUBLIC
-        FP16::fp16 
+#        FP16::fp16 
         ${OpenCV_LIBS}
     PRIVATE
         depthai::opencv
